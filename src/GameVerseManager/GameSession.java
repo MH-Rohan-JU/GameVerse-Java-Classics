@@ -1,3 +1,5 @@
+package GameVerseManager;
+
 public class GameSession {
     private static String currentUser;
 

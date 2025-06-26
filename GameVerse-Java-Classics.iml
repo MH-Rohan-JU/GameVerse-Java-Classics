@@ -7,6 +7,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
     <orderEntry type="library" exported="" name="mysql-connector-j-9.3.0" level="project" />
+=======
+    <orderEntry type="library" name="mysql-connector-j-9.3.0" level="project" />
+    <orderEntry type="library" name="jfreechart-1.0.19-demo" level="project" />
+    <orderEntry type="library" name="jfreechart-1.0.19" level="project" />
+>>>>>>> upstream/main
   </component>
 </module>

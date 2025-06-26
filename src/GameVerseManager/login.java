@@ -1,3 +1,7 @@
+package GameVerseManager;
+
+import DataBase.DatabaseManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -24,7 +28,7 @@ public class login extends JFrame implements ActionListener{
             setLocationRelativeTo(null);
 
             // Set background image using setContentPane()
-            ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/images/log_bg.jpg")); // use absolute classpath
+            ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/images/log_bg.jpg"));
             JLabel background = new JLabel(backgroundImage);
             setContentPane(background); // This sets the background correctly
             background.setLayout(null); // Must set layout here for absolute positioning
@@ -49,7 +53,7 @@ public class login extends JFrame implements ActionListener{
             passField.setBounds(centerX, 230, 200, 30);
             background.add(passField);
 
-
+//new
             // Style buttons
             loginBtn = new JButton("Login");
             loginBtn.setBounds(centerX + 50, 300, 100, 40);
@@ -85,8 +89,16 @@ public class login extends JFrame implements ActionListener{
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(this, "Login Successful!");
                         dispose();
-                        new gameMenu();
-                    } else {
+
+                        // fetch the full “name” column for display
+                        String fullName = DatabaseManager.getName();
+                        if (fullName == null) {
+                            fullName = username;  // fallback
+                        }
+
+                        new gameMenu(fullName);
+
+                } else {
                         JOptionPane.showMessageDialog(this, "Invalid Credentials!");
                     }
                 } catch (SQLException ex) {

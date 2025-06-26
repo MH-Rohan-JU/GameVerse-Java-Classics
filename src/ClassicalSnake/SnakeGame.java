@@ -6,7 +6,6 @@ public class SnakeGame{
     public SnakeGame(){
         JFrame frame=new JFrame("Classical Snake Game");
        // GameBoard board=new GameBoard(new GameController());
-        //frame.add(board);
 
         //Snake menu
         SnakeMenu smenu = new SnakeMenu(frame);

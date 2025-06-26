@@ -1,3 +1,5 @@
+package DataBase;
+
 import java.sql.*;
 
 public class DatabaseManager {
@@ -5,6 +7,20 @@ public class DatabaseManager {
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
+    public static String getName() {
+        String sql = "SELECT name FROM users WHERE username = ?";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, getName());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public static void saveHighScore(String username, String gameName, int score) {
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
             String sql = "INSERT INTO high_scores (username, game_name, score) VALUES (?, ?, ?)";
